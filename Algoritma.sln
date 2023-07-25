@@ -1,31 +1,33 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33529.622
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algoritma", "Algoritma.vcxproj", "{CD1711A3-A031-4FE5-BF5A-240886A82AEE}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Debug|x64.ActiveCfg = Debug|x64
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Debug|x64.Build.0 = Debug|x64
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Debug|x86.ActiveCfg = Debug|Win32
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Debug|x86.Build.0 = Debug|Win32
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Release|x64.ActiveCfg = Release|x64
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Release|x64.Build.0 = Release|x64
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Release|x86.ActiveCfg = Release|Win32
-		{CD1711A3-A031-4FE5-BF5A-240886A82AEE}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E0F0C072-D3B2-4017-8489-31A8BA72CCEF}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include<chrono>
+
+using namespace std;
+int main()
+{
+	int sayi;
+	cout << "lutfen sayi giriniz :";
+	cin >> sayi;
+	chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	for (int i = 2; i <=sayi ; i++)
+	{
+		int sayac = 0;
+		for (int j = 1; j <= i; j++)
+		{
+			if (i % j == 0)
+				sayac++;
+			if (sayac > 2)
+				break;
+
+		}
+		if (sayac == 2)
+			cout << i << " ,";
+
+	}
+	chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
+	std::cout << "Time difference = "
+		<< chrono::duration_cast<std::chrono::microseconds>(end - begin).count()
+		<< "[µs]" << std::endl;
+
+	cout << endl;
+	return 0;
+}
